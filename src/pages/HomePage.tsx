@@ -1,10 +1,15 @@
+// src/pages/HomePage.tsx
 import React from "react";
 
-const HomePage: React.FC = () => (
-  <div className="page home-page">
-    <h1>Welcome to Suilend DApp</h1>
-    <p>Experience futuristic neon cypherpunk lending on the Sui blockchain.</p>
-  </div>
-);
+function HomePage() {
+  return (
+    <main className="home-page">
+      <h1>Welcome to Suilend</h1>
+      <p>
+        Connect your wallet and navigate to the Lending page to get started.
+      </p>
+    </main>
+  );
+}
 
 export default HomePage;

@@ -23,8 +23,20 @@ const AccountOverview: React.FC<AccountOverviewProps> = ({
   liqThresholdUSD,
 }) => {
   const [showBreakdown, setShowBreakdown] = useState(false);
-
   const toggleBreakdown = () => setShowBreakdown((prev) => !prev);
+
+  // default to 0 if somehow undefined
+  const e = equityUSD ?? 0;
+  const td = totalDepositsUSD ?? 0;
+  const tb = totalBorrowsUSD ?? 0;
+  const n = netAPR ?? 0;
+  const wb = weightedBorrowUSD ?? 0;
+  const bl = borrowLimitUSD ?? 0;
+  const lt = liqThresholdUSD ?? 0;
+
+  // avoid division by zero
+  const healthPct = lt > 0 ? (wb / lt) * 100 : 0;
+  const borrowMarkerPct = lt > 0 ? (bl / lt) * 100 : 0;
 
   return (
     <div className="account-overview card">
@@ -34,45 +46,42 @@ const AccountOverview: React.FC<AccountOverviewProps> = ({
 
       <div className="summary-line">
         <div>
-          Equity <span className="value">${equityUSD.toFixed(2)}</span>
+          Equity <span className="value">${e.toFixed(2)}</span>
         </div>
         <div className="separator">=</div>
         <div>
-          Deposits <span className="value">${totalDepositsUSD.toFixed(2)}</span>
+          Deposits <span className="value">${td.toFixed(2)}</span>
         </div>
         <div className="separator">-</div>
         <div>
-          Borrows <span className="value">${totalBorrowsUSD.toFixed(2)}</span>
+          Borrows <span className="value">${tb.toFixed(2)}</span>
         </div>
         <div className="net-apr">
-          Net APR <span className="value">{netAPR.toFixed(2)}%</span>
+          Net APR <span className="value">{n.toFixed(2)}%</span>
         </div>
       </div>
 
       <div className="limits-line">
         <div>
           <span className="label">Weighted borrows</span>{" "}
-          <span className="value">${weightedBorrowUSD.toFixed(2)}</span>
+          <span className="value">${wb.toFixed(2)}</span>
         </div>
         <div>
           <span className="label">Borrow limit</span>{" "}
-          <span className="value">${borrowLimitUSD.toFixed(2)}</span>
+          <span className="value">${bl.toFixed(2)}</span>
         </div>
         <div>
           <span className="label">Liq. threshold</span>{" "}
-          <span className="value">${liqThresholdUSD.toFixed(2)}</span>
+          <span className="value">${lt.toFixed(2)}</span>
         </div>
       </div>
 
       <div className="health-bar">
         <div className="bar-bg">
-          <div
-            className="bar-fill"
-            style={{ width: `${(weightedBorrowUSD / liqThresholdUSD) * 100}%` }}
-          ></div>
+          <div className="bar-fill" style={{ width: `${healthPct}%` }}></div>
           <div
             className="bar-marker borrow-limit-marker"
-            style={{ left: `${(borrowLimitUSD / liqThresholdUSD) * 100}%` }}
+            style={{ left: `${borrowMarkerPct}%` }}
             title="Borrow Limit"
           ></div>
           <div
@@ -89,7 +98,6 @@ const AccountOverview: React.FC<AccountOverviewProps> = ({
 
       {showBreakdown && (
         <div className="breakdown-details">
-          {/* Detailed breakdown content here */}
           <p>Here would be the detailed breakdown of your positions.</p>
         </div>
       )}
