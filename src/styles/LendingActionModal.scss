@@ -1,0 +1,75 @@
+.lending-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(18, 28, 35, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.lending-modal {
+  background: #181f2a;
+  border-radius: 16px;
+  padding: 32px 24px 24px;
+  width: 340px;
+  box-shadow: 0 0 16px #00e1ff44;
+  position: relative;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.close-btn {
+  position: absolute;
+  right: 18px;
+  top: 10px;
+  font-size: 22px;
+  background: none;
+  border: none;
+  color: #ff66a1;
+  cursor: pointer;
+}
+h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.35rem;
+}
+.input-group input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  background: #222c3b;
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 18px;
+  outline: none;
+  box-shadow: 0 0 4px #00e1ff88;
+}
+.action-btn {
+  width: 100%;
+  padding: 13px;
+  background: linear-gradient(90deg, #00e1ff 0%, #af6aff 100%);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background 0.15s;
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+.modal-status {
+  text-align: center;
+  margin-top: 12px;
+  color: #00e1ff;
+  min-height: 18px;
+  font-size: 0.98rem;
+}

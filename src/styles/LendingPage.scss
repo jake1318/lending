@@ -1,0 +1,161 @@
+// src/styles/LendingPage.scss
+.lending-page {
+  padding: 2rem 3vw;
+  background: #0e1b2a;
+  min-height: 100vh;
+  color: #f3f3f9;
+  h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  .lending-table {
+    width: 100%;
+    background: #161f2e;
+    border-radius: 16px;
+    box-shadow: 0 2px 24px 0 #00c2ff33;
+    th,
+    td {
+      padding: 0.7rem 1.2rem;
+      text-align: left;
+    }
+    th {
+      background: #151f2d;
+      font-weight: 600;
+    }
+    tr {
+      border-bottom: 1px solid #1a2740;
+    }
+    .asset-logo {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      margin-right: 8px;
+      vertical-align: middle;
+      box-shadow: 0 0 8px #00e1ff66;
+    }
+    .apy,
+    .apy-borrow {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #12c2e9;
+      display: block;
+    }
+    .apy-borrow {
+      color: #fe8c00;
+    }
+  }
+  .lending-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    .amount-input {
+      background: #112035;
+      color: #f3f3f9;
+      border: 1px solid #0fffc1;
+      border-radius: 8px;
+      padding: 4px 8px;
+      width: 80px;
+    }
+    .action-buttons {
+      display: flex;
+      gap: 5px;
+      button {
+        background: linear-gradient(90deg, #00c6fb, #005bea);
+        border: none;
+        border-radius: 8px;
+        padding: 6px 12px;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+        transition: filter 0.1s;
+        &:hover {
+          filter: brightness(1.1);
+        }
+      }
+    }
+  }
+  .tx-status {
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 12px;
+    background: #131b25;
+    color: #00ffc2;
+    font-size: 1.1rem;
+    box-shadow: 0 0 12px #00ffc244;
+  }
+  .loading {
+    color: #14ffe9;
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 1.3rem;
+  }
+}
+.lending-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 12, 25, 0.7);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lending-modal {
+  background: #19202c;
+  color: #fff;
+  border-radius: 12px;
+  padding: 2em 2.5em;
+  min-width: 340px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.lending-modal h3 {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+.lending-modal input[type="number"] {
+  margin-left: 0.5em;
+  border-radius: 6px;
+  border: 1px solid #283040;
+  background: #0b121f;
+  color: #fff;
+  padding: 0.5em 0.8em;
+  width: 120px;
+}
+
+.lending-modal .close-btn {
+  background: none;
+  border: none;
+  color: #eee;
+  font-size: 1.6em;
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  cursor: pointer;
+}
+
+.lending-modal button {
+  border-radius: 6px;
+  padding: 0.45em 1.2em;
+  font-size: 1em;
+  margin-right: 0.7em;
+  border: none;
+  background: #00e1ff88;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.lending-modal button[disabled] {
+  background: #334055;
+  cursor: not-allowed;
+}
+
+.tx-result {
+  margin-top: 0.8em;
+  color: #0ffcd7;
+  font-weight: 500;
+}
