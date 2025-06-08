@@ -1,31 +1,24 @@
+// vite.config.ts
+
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { NodeGlobalsPolyfillPlugin } from "@esbuild-plugins/node-globals-polyfill";
-import { NodeModulesPolyfillPlugin } from "@esbuild-plugins/node-modules-polyfill";
+import process from "process";
 
 export default defineConfig({
   plugins: [react()],
+  define: {
+    // Polyfill process.env.NODE_ENV and process.env for libraries that reference process.env
+    "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
+    "process.env": {},
+  },
   resolve: {
     alias: {
-      // Polyfill Node.js globals
+      // Alias `process` imports to the browser polyfill
       process: "process/browser",
-      // If Buffer error occurs:
-      // buffer: "buffer/",
+      "@": "/src",
     },
   },
-  optimizeDeps: {
-    esbuildOptions: {
-      define: {
-        global: "globalThis",
-        "process.env": "{}",
-      },
-      plugins: [
-        NodeGlobalsPolyfillPlugin({
-          process: true,
-          // buffer: true,
-        }),
-        NodeModulesPolyfillPlugin(),
-      ],
-    },
+  server: {
+    open: true,
   },
 });

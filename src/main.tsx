@@ -1,17 +1,17 @@
+// src/main.tsx
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import { WalletProvider } from "@suiet/wallet-kit";
-import App from "./App";
-import "./styles/global.scss";
 import "@suiet/wallet-kit/style.css";
+import App from "./App";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <WalletProvider>
-      <BrowserRouter>
+      <Router>
         <App />
-      </BrowserRouter>
+      </Router>
     </WalletProvider>
   </React.StrictMode>
 );
